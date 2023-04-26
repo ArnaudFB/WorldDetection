@@ -1,0 +1,16 @@
+BlockLimit: 100
+BlockList:
+  - DIRT
+  - GRASS
+  - STONE
+DelaySeconds:
+  DelayBetweenMessage: 1000
+  DelayResetCounter: 1000
+WorldList:
+  - World1
+  - World2
+messages:
+  alert: "Tu as miné beaucoup de block, je te rappelle que tu es dans le monde %world%"
+permission : detection.bypass
+
+
