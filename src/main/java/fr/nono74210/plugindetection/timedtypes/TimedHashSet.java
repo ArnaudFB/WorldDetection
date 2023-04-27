@@ -1,7 +1,5 @@
 package fr.nono74210.plugindetection.timedtypes;
 
-import org.checkerframework.checker.units.qual.Time;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Timer;
@@ -9,7 +7,7 @@ import java.util.TimerTask;
 
 import static javax.swing.UIManager.get;
 
-public class TimedHashSet<T> implements Iterable<T> {
+public class TimedHashSet<T, Integer,> implements Iterable<T> {
 
     private final HashSet<TimedItem<T>> hashset = new HashSet<>();
 
@@ -48,6 +46,11 @@ public class TimedHashSet<T> implements Iterable<T> {
     public boolean isEmpty(){
 
         return hashset.isEmpty();
+
+    }
+    public boolean contains(T item){
+
+        return hashset.contains(item);
 
     }
     public record TimedItem<T> (T item, long expireTime){

@@ -1,8 +1,8 @@
 BlockLimit: 100
 BlockList:
-  - DIRT
-  - GRASS
-  - STONE
+  - Material.DIRT
+  - Material.GRASS_BLOCK
+  - Material.STONE
 DelaySeconds:
   DelayBetweenMessage: 1000
   DelayResetCounter: 1000
