@@ -14,6 +14,10 @@ public class DestroyBlockLister implements Listener {
         Player player = event.getPlayer();
         Material material = event.getBlock().getType();
 
+        if(!player.hasPermission("detection.bypass")){
+
+        }
+
     }
 
 }
