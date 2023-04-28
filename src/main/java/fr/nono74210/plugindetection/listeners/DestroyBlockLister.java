@@ -20,7 +20,7 @@ public class DestroyBlockLister implements Listener {
     }
     Integer blockLimit = pluginDetection.getConfig().getInt("BlockLimit");
     TimedHashSet timedHashSet = new TimedHashSet();
-    long delayMillis = pluginDetection.getConfig().getInt("DelaySeconds.DelayResetCounter");
+    long delaySecond = pluginDetection.getConfig().getInt("DelaySeconds.DelayResetCounter")*1000L;
     @EventHandler
     public void PlayerDestroyBlock(BlockBreakEvent event){
 
@@ -36,11 +36,11 @@ public class DestroyBlockLister implements Listener {
 
             if(timedHashSet.contains(player)){
 
-                timedHashSet.add(player,blockCounter + 1 , delayMillis);
+                timedHashSet.add(player,blockCounter + 1 , delaySecond);
 
             } else {
 
-                timedHashSet.add(player, 0, delayMillis);
+                timedHashSet.add(player, 0, delaySecond);
 
             }
 

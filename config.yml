@@ -1,18 +1,32 @@
+# Limite de block au delà de laquelle le joueur reçoit une alerte
+# /!\ Seulement des entiers positifs /!\
 BlockLimit: 100
+
+# Liste des blocks pris en compte pour la détection
 BlockList:
   - Material.DIRT
   - Material.GRASS_BLOCK
   - Material.STONE
+
+# Différents délai utiles au plugin (tous exprimés en seconde)
 DelaySeconds:
+  # Délai qui s'écoule entre 2 messages d'alerte
   DelayBetweenMessage: 1000
+  # Délai qu'il faut pour une remise à 0 du compteur
   DelayResetCounter: 1000
+
+# Liste des mondes pris en compte dans la détection
 WorldList:
   - World1
   - World2
+
+# Messages d'alerte
 messages:
   alert:
     title: "Tu as miné beaucoup de block !"
     subtitle: "Je te rappelle que tu es dans le monde %world_name_<world>% "
+
+# Permission d'activer ou non la détection pour un joueur
 permission : detection.bypass
 
 
