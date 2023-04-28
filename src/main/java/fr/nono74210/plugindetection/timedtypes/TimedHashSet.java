@@ -1,15 +1,10 @@
 package fr.nono74210.plugindetection.timedtypes;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
-import static javax.swing.UIManager.get;
+public class TimedHashSet<T, I, timeoutMillis> implements Iterable<T> {
 
-public class TimedHashSet<T, Integer,> implements Iterable<T> {
-
-    private final HashSet<TimedItem<T>> hashset = new HashSet<>();
+    private final HashSet<TimedItem<T, I>> hashset = new HashSet<>();
 
     public TimedHashSet() {
         Timer timer = new Timer(true);
@@ -23,9 +18,9 @@ public class TimedHashSet<T, Integer,> implements Iterable<T> {
 
         timer.scheduleAtFixedRate(task, 0, 1000L);
     }
-    public void add(T item, long timeoutMillis){
+    public void add(T item1, I item2, long timeoutMillis){
 
-        hashset.add(new TimedItem<>(item, System.currentTimeMillis()+timeoutMillis));
+        hashset.add(new TimedItem<>(item1, item2, System.currentTimeMillis()+timeoutMillis));
 
     }
     public void remove(T item){
@@ -48,14 +43,22 @@ public class TimedHashSet<T, Integer,> implements Iterable<T> {
         return hashset.isEmpty();
 
     }
-    public boolean contains(T item){
+    public boolean contains(T item) {
 
         return hashset.contains(item);
 
     }
-    public record TimedItem<T> (T item, long expireTime){
+
+    public I getItemI(){
+
+        return hashset.iterator().next().item2;
+
+    }
+    public record TimedItem<T, I> (T item1, I item2, long expireTime){
         public boolean isExpired(){
+
             return System.currentTimeMillis() > expireTime;
+
         }
 
     }
@@ -65,38 +68,58 @@ public class TimedHashSet<T, Integer,> implements Iterable<T> {
         return new TimedHashSetIterator<>(hashset.iterator());
 
     }
-    public record TimedHashSetIterator<T> (Iterator<TimedItem<T>> iterator) implements Iterator<T> {
-        @Override
-        public boolean hasNext(){
-            return iterator.hasNext();
-        }
-        @Override
-        public T next(){
-            return iterator.next().item();
-        }
-        @Override
-        public void remove(){
-            iterator.remove();
-        }
-    }
 
-    private record TimedHashSetIterator<T>(Iterator<TimedItem<T>> iterator) implements Iterator<T>{
-        @Override
-        public boolean hasNext(){
+    private final class TimedHashSetIterator<T> implements Iterator<T> {
+        private final Iterator<TimedItem<T, I>> iterator;
 
-            return iterator.hasNext();
-
-        }
-        @Override
-        public  T next(){
-
-            return iterator.next().item();
-
-        }
-        @Override
-        public void remove(){
-            iterator.remove();
+        private TimedHashSetIterator(Iterator<TimedItem<T, I>> iterator) {
+            this.iterator = iterator;
         }
 
-    }
+        @Override
+            public boolean hasNext() {
+
+                return iterator.hasNext();
+
+            }
+
+        public T next() {
+
+                return iterator.next().item1;
+
+            }
+
+        @Override
+            public void remove() {
+
+                iterator.remove();
+
+            }
+
+        public Iterator<TimedItem<T, I>> iterator() {
+            return iterator;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) return true;
+            if (obj == null || obj.getClass() != this.getClass()) return false;
+            var that = (TimedHashSetIterator) obj;
+            return Objects.equals(this.iterator, that.iterator);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(iterator);
+        }
+
+        @Override
+        public String toString() {
+            return "TimedHashSetIterator[" +
+                    "iterator=" + iterator + ']';
+        }
+
+
+        }
+
 }

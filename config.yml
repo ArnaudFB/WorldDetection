@@ -10,7 +10,9 @@ WorldList:
   - World1
   - World2
 messages:
-  alert: "Tu as miné beaucoup de block, je te rappelle que tu es dans le monde %world%"
+  alert:
+    title: "Tu as miné beaucoup de block !"
+    subtitle: "Je te rappelle que tu es dans le monde %world_name_<world>% "
 permission : detection.bypass
 
 
