@@ -6,6 +6,17 @@ authors: [ Nono74210 ]
 description: Plugin de détection du monde pour avertir le joueur
 commands:
   detection:
-    description: commande de base du plugin
+    description: Commande de base du plugin
     permission: detection.reload
+permissions:
+  detection.bypass:
+    description: Permet de bypass les alertes du plugin
+  detection.reload:
+    description: Permet de reload la config du plugin
+    default: op
+  detection.debug:
+    description: Permet d'utiliser le debug du plugin si besoin
+    default: op
+depend:
+  - PlaceholderAPI
 
