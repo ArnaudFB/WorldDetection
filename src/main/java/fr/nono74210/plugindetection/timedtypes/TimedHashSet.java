@@ -1,21 +1,17 @@
 package fr.nono74210.plugindetection.timedtypes;
 
+import fr.nono74210.plugindetection.PluginDetection;
+import org.bukkit.Bukkit;
+
 import java.util.*;
 
 public class TimedHashSet<T> implements Iterable<T> {
     private final HashSet<TimedItem<T>> hashset = new HashSet<>();
 
-    public TimedHashSet() {
-        Timer timer = new Timer(true);
-
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                hashset.removeIf(TimedItem::isExpired);
-            }
-        };
-
-        timer.scheduleAtFixedRate(task, 0, 1000L);
+    public TimedHashSet()
+    {
+        Bukkit.getScheduler().runTaskTimer(PluginDetection.getInstance(), () ->
+            hashset.removeIf(TimedItem::isExpired), 20, 20);
     }
 
     public void add(T item, long timeoutMillis) {
