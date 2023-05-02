@@ -4,6 +4,8 @@ main: fr.nono74210.plugindetection.PluginDetection
 api-version: 1.19
 authors: [ Nono74210 ]
 description: Plugin de détection du monde pour avertir le joueur
+commands:
+  detection:
+    description: commande de base du plugin
+    permission: detection.reload
 
-depend:
-  - [PlaceHolderAPI]

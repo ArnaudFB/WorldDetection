@@ -4,9 +4,9 @@ BlockLimit: 100
 
 # Liste des blocks pris en compte pour la détection
 BlockList:
-  - Material.DIRT
-  - Material.GRASS_BLOCK
-  - Material.STONE
+  - DIRT
+  - GRASS_BLOCK
+  - STONE
 
 # Différents délai utiles au plugin (tous exprimés en seconde)
 DelaySeconds:
@@ -17,16 +17,17 @@ DelaySeconds:
 
 # Liste des mondes pris en compte dans la détection
 WorldList:
-  - World1
+  - world
   - World2
 
-# Messages d'alerte
-messages:
-  alert:
-    title: "Tu as miné beaucoup de block !"
-    subtitle: "Je te rappelle que tu es dans le monde %world_name_<world>% "
+Messages:
+  Alert:
+    Title : "Tu as miné beaucoup de blocs !"
+    Subtitle: "Je te rappelle que tu es dans le monde %world_name_<world>%"
+  Bad-Arguments: "§9§l[§bPlugin§3Detection§9§l]§r §c→ La seule commande possible est /detection reload"
+  Reload-Complete: "§9§l[§bPlugin§3Detection§9§l]§r §a→ reload complete"
+debug: false
 
-# Permission d'activer ou non la détection pour un joueur
-permission : detection.bypass
+
 
 
