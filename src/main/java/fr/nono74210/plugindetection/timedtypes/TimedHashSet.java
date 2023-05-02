@@ -22,6 +22,7 @@ public class TimedHashSet<T> implements Iterable<T> {
         // Ajoute un objet dans le TimedHashSet
         hashset.add(new TimedItem<>(item, System.currentTimeMillis() + timeoutMillis));
     }
+
     public void remove(T item){
         // Retire un objet spécifique du TimedHashSet
         get(item).ifPresent(hashset::remove);
@@ -30,7 +31,6 @@ public class TimedHashSet<T> implements Iterable<T> {
     public boolean isEmpty(){
         // Check si le TimedHashSet est vide
         return hashset.isEmpty();
-
     }
 
     public boolean contains(T item) {
@@ -38,28 +38,27 @@ public class TimedHashSet<T> implements Iterable<T> {
         return get(item).isPresent();
     }
 
+    private Optional<TimedItem<T>> get(T item) {
+        return hashset.stream().filter(tTimedItem -> tTimedItem.item == item).findFirst();
+    }
+
+    public HashSet<TimedItem<T>> get() {
+        return hashset;
+    }
+
     public record TimedItem<T> (T item, long expireTime){
         public boolean isExpired(){
             // Check la date limite d'un objet
             return System.currentTimeMillis() > expireTime;
-
         }
-
     }
+
     @Override
-    public Iterator<T> iterator(){
-
+    public Iterator<T> iterator() {
         return new TimedHashSetIterator<>(hashset.iterator());
-
     }
 
-    private final class TimedHashSetIterator<T> implements Iterator<T> {
-        private final Iterator<TimedItem<T, I>> iterator;
-
-        private TimedHashSetIterator(Iterator<TimedItem<T, I>> iterator) {
-            this.iterator = iterator;
-        }
-
+    private record TimedHashSetIterator<T>(Iterator<TimedItem<T>> iterator) implements Iterator<T> {
         @Override
         public boolean hasNext() {
             return iterator.hasNext();
