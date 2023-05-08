@@ -8,7 +8,7 @@ public final class PlayerCounter {
     private final UUID uuid;
     private int counter;
 
-    private World world;
+    private final World world;
 
     public PlayerCounter(UUID uuid, World world, int counter) {
         this.uuid = uuid;

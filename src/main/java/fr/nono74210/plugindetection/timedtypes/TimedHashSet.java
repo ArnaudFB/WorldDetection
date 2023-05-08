@@ -19,11 +19,6 @@ public class TimedHashSet<T> implements Iterable<T> {
         hashset.add(new TimedItem<>(item, System.currentTimeMillis() + timeoutMillis));
     }
 
-    public void remove(T item){
-        // Retire un objet spécifique du TimedHashSet
-        get(item).ifPresent(hashset::remove);
-    }
-
     public boolean isEmpty(){
         // Check si le TimedHashSet est vide
         return hashset.isEmpty();

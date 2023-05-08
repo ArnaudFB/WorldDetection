@@ -8,6 +8,8 @@ commands:
   detection:
     description: Commande de base du plugin
     permission: detection.reload
+    aliases:
+      - pd
 permissions:
   detection.bypass:
     description: Permet de bypass les alertes du plugin
@@ -18,5 +20,5 @@ permissions:
     description: Permet d'utiliser le debug du plugin si besoin
     default: op
 depend:
-  - PlaceholderAPI
+  - Multiverse-Core
 

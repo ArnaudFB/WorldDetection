@@ -1,19 +1,15 @@
 package fr.nono74210.plugindetection;
 
 import fr.nono74210.plugindetection.commands.CommandReload;
+import fr.nono74210.plugindetection.commands.DetectionTab;
 import fr.nono74210.plugindetection.datas.PlayerCounter;
 import fr.nono74210.plugindetection.listeners.DestroyBlockListener;
 import fr.nono74210.plugindetection.timedtypes.TimedHashSet;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.Objects;
 import java.util.UUID;
 
 public final class PluginDetection extends JavaPlugin implements Listener {
@@ -32,7 +28,8 @@ public final class PluginDetection extends JavaPlugin implements Listener {
         saveDefaultConfig();
         Bukkit.getLogger();
         getServer().getPluginManager().registerEvents(new DestroyBlockListener(), this);
-        getCommand("detection").setExecutor(new CommandReload());
+        Objects.requireNonNull(this.getCommand("detection")).setExecutor(new CommandReload());
+        Objects.requireNonNull(this.getCommand("detection")).setTabCompleter(new DetectionTab());
     }
     @Override
     public void onDisable() {

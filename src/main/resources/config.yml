@@ -11,9 +11,9 @@ BlockList:
 # Différents délai utiles au plugin (tous exprimés en seconde)
 DelaySeconds:
   # Délai qui s'écoule entre 2 messages d'alerte
-  DelayBetweenMessage: 1000
+  DelayBetweenMessage: 30
   # Délai qu'il faut pour une remise à 0 du compteur
-  DelayResetCounter: 1000
+  DelayResetCounter: 180
 
 # Liste des mondes pris en compte dans la détection
 WorldList:
@@ -23,9 +23,9 @@ WorldList:
 Messages:
   Alert:
     Title : "Tu as miné beaucoup de blocs !"
-    Subtitle: "Je te rappelle que tu es dans le monde %world_name_<world>%"
+    Subtitle: "Je te rappelle que tu es dans le monde "
   Bad-Arguments: "§9§l[§bPlugin§3Detection§9§l]§r §c→ La seule commande possible est /detection reload"
-  Reload-Complete: "§9§l[§bPlugin§3Detection§9§l]§r §a→ reload complete"
+  Reload-Complete: "§9§l[§bPlugin§3Detection§9§l]§r §a→ reload effectué"
 debug: false
 
 
