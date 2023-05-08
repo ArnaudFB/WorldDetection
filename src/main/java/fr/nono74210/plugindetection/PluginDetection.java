@@ -4,6 +4,7 @@ import fr.nono74210.plugindetection.commands.CommandReload;
 import fr.nono74210.plugindetection.datas.PlayerCounter;
 import fr.nono74210.plugindetection.listeners.DestroyBlockListener;
 import fr.nono74210.plugindetection.timedtypes.TimedHashSet;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
@@ -29,13 +30,13 @@ public final class PluginDetection extends JavaPlugin implements Listener {
         playerMessages = new TimedHashSet<>();
 
         saveDefaultConfig();
-        System.out.println("PluginDetection se lance");
+        Bukkit.getLogger();
         getServer().getPluginManager().registerEvents(new DestroyBlockListener(), this);
         getCommand("detection").setExecutor(new CommandReload());
     }
     @Override
     public void onDisable() {
-        System.out.println("Plugin de detection s'arrête");
+        Bukkit.getLogger();
     }
 
     public TimedHashSet<PlayerCounter> getPlayerCounter() {
