@@ -1,14 +1,23 @@
 package fr.nono74210.plugindetection.datas;
 
+import org.bukkit.World;
+
 import java.util.UUID;
 
 public final class PlayerCounter {
     private final UUID uuid;
     private int counter;
 
-    public PlayerCounter(UUID uuid, int counter) {
+    private World world;
+
+    public PlayerCounter(UUID uuid, World world, int counter) {
         this.uuid = uuid;
         this.counter = counter;
+        this.world = world;
+    }
+
+    public World world() {
+        return world;
     }
 
     public UUID uuid() {

@@ -48,11 +48,12 @@ public class DestroyBlockListener implements Listener {
                 .map(TimedHashSet.TimedItem::item)
                 .map(PlayerCounter.class::cast)
                 .filter(pC -> player.getUniqueId().equals(pC.uuid()))
+                .filter(pC -> player.getWorld().equals(pC.world()))
                 .findFirst();
 
         if (optPlayerCounter.isEmpty()) {
             // Sinon ajout au timedHashSet
-            plugin.getPlayerCounter().add(new PlayerCounter(player.getUniqueId(), 1),
+            plugin.getPlayerCounter().add(new PlayerCounter(player.getUniqueId(), world, 1),
                     plugin.getConfig().getLong("DelaySeconds.DelayResetCounter", 10L)*1000L);
 
             if (plugin.getConfig().getBoolean("debug", false) && player.hasPermission("detection.debug")) {
