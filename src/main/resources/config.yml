@@ -28,6 +28,7 @@ Messages:
   ReloadComplete: "&bPlugin&3Detection &8→ &aPlugin reloaded without error."
 
 Debug: false
+ClearPlayersTimesOnReload: false
 
 
 

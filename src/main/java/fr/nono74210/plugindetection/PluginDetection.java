@@ -17,7 +17,7 @@ public final class PluginDetection extends JavaPlugin implements Listener {
     private TimedHashSet<PlayerCounter> playerCounterList;
     private TimedHashSet<UUID> playerMessages;
 
-    private static ConsoleCommandSender log;
+    public static ConsoleCommandSender log;
 
     @Override
     public void onEnable() {
@@ -27,7 +27,7 @@ public final class PluginDetection extends JavaPlugin implements Listener {
         playerCounterList = new TimedHashSet<>();
         playerMessages = new TimedHashSet<>();
 
-        log.sendMessage("&bPlugin&3Detection &eenabling...");
+        log.sendMessage(MessageUtils.colorize("&bPlugin&3Detection &eenabling..."));
         saveDefaultConfig();
 
         getServer().getPluginManager().registerEvents(new DestroyBlockListener(), this);
@@ -35,12 +35,12 @@ public final class PluginDetection extends JavaPlugin implements Listener {
         getCommand("detection").setExecutor(new CommandReload());
         getCommand("detection").setTabCompleter(new DetectionTab());
 
-        log.sendMessage("&bPlugin&3Detection &aenabled!");
+        log.sendMessage(MessageUtils.colorize("&bPlugin&3Detection &aenabled!"));
     }
 
     @Override
     public void onDisable() {
-        log.sendMessage("&bPlugin&3Detection &cdisabled!");
+        log.sendMessage(MessageUtils.colorize("&bPlugin&3Detection &cdisabled!"));
     }
 
     public static PluginDetection getInstance() { return instance; }

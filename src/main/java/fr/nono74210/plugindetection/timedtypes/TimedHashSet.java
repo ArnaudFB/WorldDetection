@@ -37,10 +37,32 @@ public class TimedHashSet<T> implements Iterable<T> {
         return hashset;
     }
 
-    public record TimedItem<T> (T item, long expireTime){
-        public boolean isExpired(){
-            // Check la date limite d'un objet
-            return System.currentTimeMillis() > expireTime;
+    public void clear() {
+        hashset.forEach(TimedItem::setForceExpired);
+    }
+
+    public static final class TimedItem<T> {
+        private final T item;
+        private final long expireTime;
+        private boolean forceExpired;
+
+        public TimedItem(T item, long expireTime) {
+            this.item = item;
+            this.expireTime = expireTime;
+            this.forceExpired = false;
+        }
+
+        public boolean isExpired() {
+                // Check la date limite d'un objet
+                return System.currentTimeMillis() > expireTime || forceExpired;
+            }
+
+        public T item() {
+            return item;
+        }
+
+        public void setForceExpired() {
+            this.forceExpired = true;
         }
     }
 

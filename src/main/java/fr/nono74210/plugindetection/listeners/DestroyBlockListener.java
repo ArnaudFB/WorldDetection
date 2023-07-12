@@ -5,18 +5,10 @@ import fr.nono74210.plugindetection.PluginDetection;
 import fr.nono74210.plugindetection.datas.PlayerCounter;
 import fr.nono74210.plugindetection.timedtypes.TimedHashSet;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import com.onarandombox.MultiverseCore.MultiverseCore;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 public class DestroyBlockListener implements Listener {
     private final PluginDetection plugin;
@@ -81,13 +73,13 @@ public class DestroyBlockListener implements Listener {
         }
 
         // Si il est dans le monde concerné et son compteur dépasse la limite
-        String alertTitle = plugin.getConfig().getString("Messages.Alert.Title", "&cYou mined too many blocks");
-        String alertSubtitle = plugin.getConfig().getString("Messages.Alert.Subtitle", "&7&oDon't forget you are in the world &e&o%worldName%")
+        var alertTitle = plugin.getConfig().getString("Messages.Alert.Title", "&cYou mined too many blocks");
+        var alertSubtitle = plugin.getConfig().getString("Messages.Alert.Subtitle", "&7&oDon't forget you are in the world &e&o%worldName%")
                 .replaceAll("%worldName%", core.getMVWorldManager().getMVWorld(player.getWorld()).getAlias());
 
         plugin.getPlayerMessages().add(player.getUniqueId(), plugin.getConfig().getLong("DelaySeconds.DelayBetweenMessage", 10L) * 1000L);
 
         // Envoie du message d'alerte de la config
         player.sendTitle(MessageUtils.colorize(alertTitle), MessageUtils.colorize(alertSubtitle), 10, 70, 20);
-        }
     }
+}

@@ -1,5 +1,6 @@
 package fr.nono74210.plugindetection.commands;
 
+import fr.nono74210.plugindetection.MessageUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,13 +22,18 @@ public class CommandReload implements CommandExecutor {
         }
 
         if (args.length != 1 || !args[0].equalsIgnoreCase("reload")) {
-            sender.sendMessage(plugin.getConfig().getString("Messages.BadArguments", "&bPlugin&3Detection &8→ &cThere's an error in the command."));
+            sender.sendMessage(MessageUtils.colorize(plugin.getConfig().getString("Messages.BadArguments", "&bPlugin&3Detection &8→ &cThere's an error in the command.")));
             return false;
+        }
+
+        if (plugin.getConfig().getBoolean("ClearPlayersTimesOnReload", false)) {
+            plugin.getPlayerCounter().clear();
+            plugin.getPlayerMessages().clear();
         }
 
         plugin.reloadConfig();
 
-        sender.sendMessage(plugin.getConfig().getString("Messages.ReloadComplete", "&bPlugin&3Detection &8→ &aPlugin reloaded without error."));
+        sender.sendMessage(MessageUtils.colorize(plugin.getConfig().getString("Messages.ReloadComplete", "&bPlugin&3Detection &8→ &aPlugin reloaded without error.")));
         return true;
     }
 
