@@ -1,9 +1,9 @@
-package fr.nono74210.plugindetection.listeners;
+package fr.nono74210.pluginblockdetection.listeners;
 
-import fr.nono74210.plugindetection.MessageUtils;
-import fr.nono74210.plugindetection.PluginDetection;
-import fr.nono74210.plugindetection.datas.PlayerCounter;
-import fr.nono74210.plugindetection.timedtypes.TimedHashSet;
+import fr.nono74210.pluginblockdetection.MessageUtils;
+import fr.nono74210.pluginblockdetection.PluginBlockDetection;
+import fr.nono74210.pluginblockdetection.datas.PlayerCounter;
+import fr.nono74210.pluginblockdetection.timedtypes.TimedHashSet;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,12 +11,12 @@ import org.bukkit.event.block.BlockBreakEvent;
 import com.onarandombox.MultiverseCore.MultiverseCore;
 
 public class DestroyBlockListener implements Listener {
-    private final PluginDetection plugin;
+    private final PluginBlockDetection plugin;
 
     MultiverseCore core = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
 
     public DestroyBlockListener() {
-        plugin = PluginDetection.getInstance();
+        plugin = PluginBlockDetection.getInstance();
     }
 
     @EventHandler

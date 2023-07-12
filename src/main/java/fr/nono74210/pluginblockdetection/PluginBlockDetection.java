@@ -1,10 +1,10 @@
-package fr.nono74210.plugindetection;
+package fr.nono74210.pluginblockdetection;
 
-import fr.nono74210.plugindetection.commands.CommandReload;
-import fr.nono74210.plugindetection.commands.DetectionTab;
-import fr.nono74210.plugindetection.datas.PlayerCounter;
-import fr.nono74210.plugindetection.listeners.DestroyBlockListener;
-import fr.nono74210.plugindetection.timedtypes.TimedHashSet;
+import fr.nono74210.pluginblockdetection.commands.CommandReload;
+import fr.nono74210.pluginblockdetection.commands.DetectionTab;
+import fr.nono74210.pluginblockdetection.datas.PlayerCounter;
+import fr.nono74210.pluginblockdetection.listeners.DestroyBlockListener;
+import fr.nono74210.pluginblockdetection.timedtypes.TimedHashSet;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.event.Listener;
@@ -12,8 +12,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
 
-public final class PluginDetection extends JavaPlugin implements Listener {
-    private static PluginDetection instance;
+public final class PluginBlockDetection extends JavaPlugin implements Listener {
+    private static PluginBlockDetection instance;
     private TimedHashSet<PlayerCounter> playerCounterList;
     private TimedHashSet<UUID> playerMessages;
 
@@ -27,7 +27,7 @@ public final class PluginDetection extends JavaPlugin implements Listener {
         playerCounterList = new TimedHashSet<>();
         playerMessages = new TimedHashSet<>();
 
-        log.sendMessage(MessageUtils.colorize("&bPlugin&3Detection &eenabling..."));
+        log.sendMessage(MessageUtils.colorize("&bPlugin&3Block&bDetection &eenabling..."));
         saveDefaultConfig();
 
         getServer().getPluginManager().registerEvents(new DestroyBlockListener(), this);
@@ -35,15 +35,15 @@ public final class PluginDetection extends JavaPlugin implements Listener {
         getCommand("detection").setExecutor(new CommandReload());
         getCommand("detection").setTabCompleter(new DetectionTab());
 
-        log.sendMessage(MessageUtils.colorize("&bPlugin&3Detection &aenabled!"));
+        log.sendMessage(MessageUtils.colorize("&bPlugin&3Block&bDetection &aenabled!"));
     }
 
     @Override
     public void onDisable() {
-        log.sendMessage(MessageUtils.colorize("&bPlugin&3Detection &cdisabled!"));
+        log.sendMessage(MessageUtils.colorize("&bPlugin&3Block&bDetection &cdisabled!"));
     }
 
-    public static PluginDetection getInstance() { return instance; }
+    public static PluginBlockDetection getInstance() { return instance; }
 
     public TimedHashSet<PlayerCounter> getPlayerCounter() {
         return playerCounterList;

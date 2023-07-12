@@ -1,4 +1,4 @@
-package fr.nono74210.plugindetection;
+package fr.nono74210.pluginblockdetection;
 
 import org.bukkit.ChatColor;
 

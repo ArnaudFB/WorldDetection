@@ -1,4 +1,4 @@
-package fr.nono74210.plugindetection.datas;
+package fr.nono74210.pluginblockdetection.datas;
 
 import org.bukkit.World;
 

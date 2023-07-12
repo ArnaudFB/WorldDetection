@@ -24,8 +24,8 @@ Messages:
   Alert:
     Title : "&cYou mined too many blocks"
     Subtitle: "&7&oDon't forget you are in the world &e&o%worldName%"
-  BadArguments: "&bPlugin&3Detection &8→ &cThere's an error in the command."
-  ReloadComplete: "&bPlugin&3Detection &8→ &aPlugin reloaded without error."
+  BadArguments: "&bPlugin&3Block&bDetection &8→ &cThere's an error in the command."
+  ReloadComplete: "&bPlugin&3Block&bDetection &8→ &aPlugin reloaded without error."
 
 Debug: false
 ClearPlayersTimesOnReload: false

@@ -1,6 +1,6 @@
-name: PluginDetection
+name: PluginBlockDetection
 version: '${project.version}'
-main: fr.nono74210.plugindetection.PluginDetection
+main: fr.nono74210.pluginblockdetection.PluginBlockDetection
 api-version: 1.19
 authors: [ Nono74210 ]
 description: Plugin de détection du monde pour avertir le joueur qu'il ne casse pas les blocks sur le bon monde
