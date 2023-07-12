@@ -13,26 +13,22 @@ public class CommandReload implements CommandExecutor {
     public CommandReload() {
         plugin = PluginDetection.getInstance();
     }
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-
-        if (!command.getName().equalsIgnoreCase("detection")) {
-            return false;
-        }
         if (!sender.hasPermission("detection.reload")) {
             return false;
         }
+
         if (args.length != 1 || !args[0].equalsIgnoreCase("reload")) {
-            String defaultBadArgs = "§9§l[§bPlugin§3Detection§9§l]§r §c→ /detection reload is the only available command";
-            sender.sendMessage(plugin.getConfig().getString("Messages.Bad-Arguments", defaultBadArgs));
+            sender.sendMessage(plugin.getConfig().getString("Messages.BadArguments", "§9§l[§bPlugin§3Detection§9§l]§r §c→ /detection reload is the only available command"));
             return false;
-        } else {
-            plugin.reloadConfig();
-            String defaultReload = "§9§l[§bPlugin§3Detection§9§l]§r §c→ reload completed";
-            sender.sendMessage(plugin.getConfig().getString("Messages.Reload-Complete", defaultReload));
-            return true;
         }
 
+        plugin.reloadConfig();
+
+        sender.sendMessage(plugin.getConfig().getString("Messages.ReloadComplete", "§9§l[§bPlugin§3Detection§9§l]§r §c→ reload completed"));
+        return true;
     }
 
 }

@@ -24,8 +24,8 @@ Messages:
   Alert:
     Title : "Tu as miné beaucoup de blocs !"
     Subtitle: "Je te rappelle que tu es dans le monde "
-  Bad-Arguments: "§9§l[§bPlugin§3Detection§9§l]§r §c→ La seule commande possible est /detection reload"
-  Reload-Complete: "§9§l[§bPlugin§3Detection§9§l]§r §a→ reload effectué"
+  BadArguments: "§9§l[§bPlugin§3Detection§9§l]§r §c→ La seule commande possible est /detection reload"
+  ReloadComplete: "§9§l[§bPlugin§3Detection§9§l]§r §a→ reload effectué"
 debug: false
 
 
