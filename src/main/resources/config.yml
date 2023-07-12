@@ -22,11 +22,12 @@ WorldList:
 
 Messages:
   Alert:
-    Title : "Tu as miné beaucoup de blocs !"
-    Subtitle: "Je te rappelle que tu es dans le monde "
-  BadArguments: "§9§l[§bPlugin§3Detection§9§l]§r §c→ La seule commande possible est /detection reload"
-  ReloadComplete: "§9§l[§bPlugin§3Detection§9§l]§r §a→ reload effectué"
-debug: false
+    Title : "&cYou mined too many blocks"
+    Subtitle: "&7&oDon't forget you are in the world &e&o%worldName%"
+  BadArguments: "&bPlugin&3Detection &8→ &cThere's an error in the command."
+  ReloadComplete: "&bPlugin&3Detection &8→ &aPlugin reloaded without error."
+
+Debug: false
 
 
 
