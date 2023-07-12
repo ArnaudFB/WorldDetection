@@ -1,6 +1,6 @@
-package fr.nono74210.plugindetection.timedtypes;
+package fr.nono74210.pluginblockdetection.timedtypes;
 
-import fr.nono74210.plugindetection.PluginDetection;
+import fr.nono74210.pluginblockdetection.PluginBlockDetection;
 import org.bukkit.Bukkit;
 
 import java.util.*;
@@ -10,7 +10,7 @@ public class TimedHashSet<T> implements Iterable<T> {
 
     public TimedHashSet()
     {
-        Bukkit.getScheduler().runTaskTimer(PluginDetection.getInstance(), () ->
+        Bukkit.getScheduler().runTaskTimer(PluginBlockDetection.getInstance(), () ->
             hashset.removeIf(TimedItem::isExpired), 20, 20);
     }
 
@@ -37,10 +37,32 @@ public class TimedHashSet<T> implements Iterable<T> {
         return hashset;
     }
 
-    public record TimedItem<T> (T item, long expireTime){
-        public boolean isExpired(){
-            // Check la date limite d'un objet
-            return System.currentTimeMillis() > expireTime;
+    public void clear() {
+        hashset.forEach(TimedItem::setForceExpired);
+    }
+
+    public static final class TimedItem<T> {
+        private final T item;
+        private final long expireTime;
+        private boolean forceExpired;
+
+        public TimedItem(T item, long expireTime) {
+            this.item = item;
+            this.expireTime = expireTime;
+            this.forceExpired = false;
+        }
+
+        public boolean isExpired() {
+                // Check la date limite d'un objet
+                return System.currentTimeMillis() > expireTime || forceExpired;
+            }
+
+        public T item() {
+            return item;
+        }
+
+        public void setForceExpired() {
+            this.forceExpired = true;
         }
     }
 

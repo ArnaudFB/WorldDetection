@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.nono74210</groupId>
-    <artifactId>PluginDetection</artifactId>
-    <version>1.0</version>
+    <artifactId>PluginBlockDetection</artifactId>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
-    <name>PluginDetection</name>
+    <name>PluginBlockDetection</name>
 
     <description>Plugin de détection du monde pour avertir le joueur</description>
     <properties>

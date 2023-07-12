@@ -1,4 +1,4 @@
-package fr.nono74210.plugindetection.datas;
+package fr.nono74210.pluginblockdetection.datas;
 
 import org.bukkit.World;
 
@@ -34,8 +34,10 @@ public final class PlayerCounter {
 
     @Override
     public String toString() {
-        return "PlayerCounter[" +
-                "uuid=" + uuid + ", " +
-                "counter=" + counter + ']';
+        return "PlayerCounter{" +
+                "uuid=" + uuid +
+                ", counter=" + counter +
+                ", world=" + (world != null ? world.getName() : "UnknownWorld") +
+                '}';
     }
 }
