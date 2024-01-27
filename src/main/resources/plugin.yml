@@ -1,23 +1,25 @@
-name: PluginDetection
+name: WorldDetection
 version: '${project.version}'
-main: fr.nono74210.plugindetection.PluginDetection
+main: fr.nono74210.worlddetection.WorldDetection
 api-version: 1.19
 authors: [ Nono74210 ]
-description: Plugin de détection du monde pour avertir le joueur
+description: Detect if a player is gathering resources in the wrong world to warn him
 commands:
   detection:
-    description: Commande de base du plugin
+    description: Base command
     permission: detection.reload
     aliases:
-      - pd
+      - wd
+      - wdetection
+      - worlddetection
 permissions:
   detection.bypass:
-    description: Permet de bypass les alertes du plugin
+    description: Allows one to bypass the alerts
   detection.reload:
-    description: Permet de reload la config du plugin
+    description: Reload config file
     default: op
   detection.debug:
-    description: Permet d'utiliser le debug du plugin si besoin
+    description: Use the debug property of the plugin
     default: op
 depend:
   - Multiverse-Core

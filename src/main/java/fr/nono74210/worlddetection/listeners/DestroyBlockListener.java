@@ -1,8 +1,8 @@
-package fr.nono74210.plugindetection.listeners;
+package fr.nono74210.worlddetection.listeners;
 
-import fr.nono74210.plugindetection.PluginDetection;
-import fr.nono74210.plugindetection.datas.PlayerCounter;
-import fr.nono74210.plugindetection.timedtypes.TimedHashSet;
+import fr.nono74210.worlddetection.WorldDetection;
+import fr.nono74210.worlddetection.datas.PlayerCounter;
+import fr.nono74210.worlddetection.timedtypes.TimedHashSet;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,13 +18,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class DestroyBlockListener implements Listener {
-    private final PluginDetection plugin;
-
     MultiverseCore core = (MultiverseCore) Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
-
-    public DestroyBlockListener() {
-        plugin = PluginDetection.getInstance();
-    }
+    WorldDetection plugin = WorldDetection.getInstance();
 
     @EventHandler
     public void onBreak(BlockBreakEvent event){

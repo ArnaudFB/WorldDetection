@@ -1,10 +1,10 @@
-package fr.nono74210.plugindetection;
+package fr.nono74210.worlddetection;
 
-import fr.nono74210.plugindetection.commands.CommandReload;
-import fr.nono74210.plugindetection.commands.DetectionTab;
-import fr.nono74210.plugindetection.datas.PlayerCounter;
-import fr.nono74210.plugindetection.listeners.DestroyBlockListener;
-import fr.nono74210.plugindetection.timedtypes.TimedHashSet;
+import fr.nono74210.worlddetection.commands.CommandReload;
+import fr.nono74210.worlddetection.commands.DetectionTab;
+import fr.nono74210.worlddetection.datas.PlayerCounter;
+import fr.nono74210.worlddetection.listeners.DestroyBlockListener;
+import fr.nono74210.worlddetection.timedtypes.TimedHashSet;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,11 +12,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Objects;
 import java.util.UUID;
 
-public final class PluginDetection extends JavaPlugin implements Listener {
-    private static PluginDetection instance;
+public final class WorldDetection extends JavaPlugin implements Listener {
+    private static WorldDetection instance;
     private TimedHashSet<PlayerCounter> playerCounterList;
     private TimedHashSet<UUID> playerMessages;
-    public static PluginDetection getInstance() { return instance; }
+    public static WorldDetection getInstance() { return instance; }
 
     @Override
     public void onEnable() {

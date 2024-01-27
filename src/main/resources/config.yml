@@ -1,21 +1,21 @@
-# Limite de block au delà de laquelle le joueur reçoit une alerte
-# /!\ Seulement des entiers positifs /!\
+# Threshold to trigger alert messages
+# /!\ Positive integers only /!\
 BlockLimit: 100
 
-# Liste des blocks pris en compte pour la détection
+# Block list to be taken into account for the detection
 BlockList:
   - DIRT
   - GRASS_BLOCK
   - STONE
 
-# Différents délai utiles au plugin (tous exprimés en seconde)
+# Delays (in second) for the plugin
 DelaySeconds:
-  # Délai qui s'écoule entre 2 messages d'alerte
+  # Delay between two alert messages
   DelayBetweenMessage: 30
-  # Délai qu'il faut pour une remise à 0 du compteur
+  # Delay before the counter resets if no block were mined
   DelayResetCounter: 180
 
-# Liste des mondes pris en compte dans la détection
+# World list to be taken into account for the detection
 WorldList:
   - world
   - World2
@@ -24,8 +24,8 @@ Messages:
   Alert:
     Title : "Tu as miné beaucoup de blocs !"
     Subtitle: "Je te rappelle que tu es dans le monde "
-  Bad-Arguments: "§9§l[§bPlugin§3Detection§9§l]§r §c→ La seule commande possible est /detection reload"
-  Reload-Complete: "§9§l[§bPlugin§3Detection§9§l]§r §a→ reload effectué"
+  Bad-Arguments: "§9§l[§bWorld§3Detection§9§l]§r §c→ La seule commande possible est /detection reload"
+  Reload-Complete: "§9§l[§bWorld§3Detection§9§l]§r §a→ reload effectué"
 debug: false
 
 

@@ -1,4 +1,4 @@
-package fr.nono74210.plugindetection.commands;
+package fr.nono74210.worlddetection.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

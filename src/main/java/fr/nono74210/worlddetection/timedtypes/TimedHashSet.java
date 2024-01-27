@@ -1,6 +1,6 @@
-package fr.nono74210.plugindetection.timedtypes;
+package fr.nono74210.worlddetection.timedtypes;
 
-import fr.nono74210.plugindetection.PluginDetection;
+import fr.nono74210.worlddetection.WorldDetection;
 import org.bukkit.Bukkit;
 
 import java.util.*;
@@ -10,7 +10,7 @@ public class TimedHashSet<T> implements Iterable<T> {
 
     public TimedHashSet()
     {
-        Bukkit.getScheduler().runTaskTimer(PluginDetection.getInstance(), () ->
+        Bukkit.getScheduler().runTaskTimer(WorldDetection.getInstance(), () ->
             hashset.removeIf(TimedItem::isExpired), 20, 20);
     }
 
